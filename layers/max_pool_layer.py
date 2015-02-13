@@ -14,7 +14,7 @@ rng = np.random.RandomState(2345)
 class(maxPoolLayer):
   def __init__(self, inputMinibatch, poolShape = (2, 2))
   
-  self.inputMinibatch = inputMinibatch
+    self.inputMinibatch = inputMinibatch
 
-  # Symbolic expression to perform the actual 2D convolution
-  self.outMinibatch = downsample.max_pool_2d(inputMinibatch, poolShape, ignore_norder=True)
+    # Symbolic expression to perform the actual 2D convolution
+    self.outMinibatch = downsample.max_pool_2d(inputMinibatch, poolShape, ignore_norder=True)
