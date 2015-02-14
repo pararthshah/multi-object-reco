@@ -11,8 +11,8 @@ from theano.tensor.signal import downsample
 
 rng = np.random.RandomState(2345)
 
-class(maxPoolLayer):
-  def __init__(self, inputMinibatch, poolShape = (2, 2))
+class maxPoolLayer(object):
+  def __init__(self, inputMinibatch, poolShape = (2, 2)):
   
     self.inputMinibatch = inputMinibatch
 

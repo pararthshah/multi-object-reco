@@ -7,10 +7,9 @@ import matplotlib.pyplot as plt
 import theano
 import theano.tensor as T
 from theano.tensor.nnet import conv
-rng = np.random.RandomState(2345)
 
-class(convLayer):
-  def __init__(self, rng, inputMinibatch, filterShape, imageShape)
+class convLayer(object):
+  def __init__(self, rng, inputMinibatch, filterShape, imageShape):
   
     # Check that the number of channels implied in the image and the filters is the same
     assert imageShape[1] == filterShape[1]  

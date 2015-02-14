@@ -9,9 +9,11 @@ import theano.tensor as T
 from theano.tensor.nnet import conv
 rng = np.random.RandomState(2345)
 
-class(fcLayer):
-  def __init__(self, rng, inputMinibatch, numIn, numOut, activation=None)
-  
+class fcLayer(object):
+  def __init__(self, rng, inputMinibatch, numIn, numOut, activation=None, y):
+    # Softmax activation for the last layer
+    self.softmax = T.nnet.softmax 
+
     self.inputMinibatch = inputMinibatch
 
     # Initialize a set of convolution filter weights
@@ -35,10 +37,15 @@ class(fcLayer):
     affineOut = T.dot(inputMinibatch, self.W) + self.b
 
     # Add the bias and apply the activation function
-    if activation is None:
-      self.output = affineOut
+    if activation is 'softmax':
+      self.loss = self.softax(affineOut, y)
     else:
-      self.output = activation(affineOut)
+      self.loss = affineOut
+    self.y_pred = T.argmax(self.p_y_given_x, axis = 1)
 
     # Store the parameters for backprop
     self.params = [self.W, self.b]
+  def __softmax__(scores, y):
+    self.p_y_given_x = T.nnet.softmax(scores)
+    return -T.mean(T.log(sself.p_y_given_x)[T.arrange(y.shape[0]), y])
+
